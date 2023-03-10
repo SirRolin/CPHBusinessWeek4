@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 class Main{
+	static GameMenu gm;
 	
 	public static void main(String[] args){
 		// declare and instantiate the ations
@@ -9,19 +10,15 @@ class Main{
 		for(String s: new String[]{"1) Start game","2) Resume game","3) Pause game","4) End game"}){
 			Actions.add(s);
 		}
-		
+		gm = new GameMenu(Actions);
 		// declare and instantiate the menu
-		GameMenu gm = new GameMenu(Actions);
 		
 		
 		// test displayMenu function in the GameMenu class
 		//gm.displayMenu();
 		
 		String choice = gm.getAction();
-		if(!isNumber(choice)){
-			choice = String.valueOf(gm.getActionIndexFromAction(choice));
-		}
-		doAction(Integer.parseInt(choice));
+		doAction(choice);
 	}
 	
 	public static void doAction(int action){
@@ -42,6 +39,11 @@ class Main{
 				break;
 		}
 	}
+	
+	public static void doAction(String action){
+		doAction(gm.getActionIndexFromAction(action));
+	}
+	
 	public static boolean isNumber(String string) {
 		String regex = "-?[\\d]*";
 		return Pattern.matches(regex, string);

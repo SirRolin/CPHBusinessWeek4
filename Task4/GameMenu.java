@@ -7,7 +7,7 @@ class GameMenu{
 	}
 	
 	void displayMenu(){
-		for(String action: actions){
+		for(String action: this.actions){
 			System.out.println(action);
 		}
 	}

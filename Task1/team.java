@@ -31,6 +31,10 @@ class Team{
 		return teamRank;
 	}
 	
+	public void addPlayer(String name){
+		teamMates.add(name);
+	}
+	
 	@Override
 	public String toString(){
 		String output = "Team: " + nameOfTeam + " - Rank: " + teamRank + ".";
